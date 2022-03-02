@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.p1 {
+  float: left;
+  width: 80%;
+}
+.p2 {
+  float: right;
+  width: 20%;
+}
