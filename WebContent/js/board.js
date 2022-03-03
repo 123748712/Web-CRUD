@@ -2,12 +2,14 @@
  * 
  */
 //목록 가져오기
+let tpNum = 0;
 function listServer(page){
 	$.ajax({
 		url:'/List.do',
 		type:'post',
 		data: {'page' : page},
 		success:function(result){
+			tpNum = result.tp;
 			//BS-accordion게시판 예제 활용
 			let code = `<div class="panel-group" id="accordion">`;
 			//여기부터 반복
@@ -40,7 +42,7 @@ function listServer(page){
 			// <이전> 버튼
 			if(result.sp >= 1) {
 				pager += `<ul class="pager">`
-				pager += `<li><a href="#">Prev</a></li></ul>`
+				pager += `<li><a href="#" class="prev">Prev</a></li></ul>`
 			}
 		 	pager += `<ul class="pagination pager">`;
 			for(let i = result.sp; i<=result.ep; i++) {
@@ -54,7 +56,7 @@ function listServer(page){
 			// <다음> 버튼
 			if(result.ep <= result.tp){
 				pager += `<ul class="pager">`
-				pager += `<li><a href="#">Next</a></li></ul>`
+				pager += `<li><a href="#" class="next">Next</a></li></ul>`
 			}
 			pager += `</div>`;
 				$('#pageList').html(pager);
@@ -68,8 +70,29 @@ function listServer(page){
 
 /* 페이지 번호 클릭 이벤트 */
 $(function(){
-$('#pageList').on('click', '.paging', function(){
-	currentPage = $(this).text();
-	listServer(currentPage);
-});
+	$('#pageList').on('click', '.paging', function(){
+		currentPage = $(this).text();
+		listServer(currentPage);
+	});
+	/* next 틀릭 이벤트 */
+	$('#pageList').on('click', '.next', function(){
+		let vnext = $('.paging').last().text();
+		if(vnext == tpNum) {
+			currentPage = vnext;
+		} else {
+			currentPage = parseInt(vnext)+1;
+		}
+		listServer(currentPage);
+	});
+	/* prev 클릭 이벤트 */
+	$('#pageList').on('click', '.prev', function(){
+		let vprev = $('.paging').first().text();
+		if(vprev == 1) {
+			currentPage = vprev;
+		} else {
+			currentPage = parseInt(vprev)-1;
+		}
+		listServer(currentPage);
+		
+	});
 });
