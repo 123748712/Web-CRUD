@@ -13,4 +13,6 @@ public interface IBoardDao {
 	
 	// 게시글 조회
 	public List<BoardVO> boardList(Map<String, Integer> map) throws SQLException;
+	
+	public void insertBoard(BoardVO vo) throws SQLException;
 }

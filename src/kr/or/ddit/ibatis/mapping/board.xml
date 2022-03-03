@@ -27,5 +27,24 @@
 		<![CDATA[]]> => < > 등 기호가 문자 그대로 인식할 수 있도록 해주는 구문
 	 -->
 	</select>
+	
+	<insert id="insertBoard" parameterClass="boardVO">
+		<selectKey keyProperty="num" resultClass="int">
+			SELECT BOARD_NUM_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO BOARD
+		VALUES(
+			#num#,
+			#subject#,
+			#writer#,
+			#mail#,
+			#password#,
+			#content#,
+			0, <!-- #hit# 조회수 0으로 insert -->
+			#wip#,
+			sysdate
+		)
+	</insert>
 		
 </sqlMap>

@@ -41,4 +41,14 @@ public class BoardServiceImpl implements IBoardService {
 		}
 		return list;
 	}
+	public String insertBoard(BoardVO vo) {
+		String a = null;
+		try {
+			dao.insertBoard(vo);
+			a = "success";
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return a;
+	}
 }

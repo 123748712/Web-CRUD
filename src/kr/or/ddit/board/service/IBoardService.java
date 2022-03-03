@@ -12,4 +12,7 @@ public interface IBoardService {
 	
 	// 게시글 조회
 	public List<BoardVO> boardList(Map<String, Integer> map);
+	
+	// 게시글 입력
+	public String insertBoard(BoardVO vo);
 }

@@ -11,5 +11,14 @@
   float: left;
 }
 .container {
-  margin-left: 43%;	
+  margin-left: 30%;	
+}
+#list {
+  margin: 20px;	
+}
+.col-sm-2 {
+  padding: 0px;
+}
+#send {
+  margin-left: 500px;
 }

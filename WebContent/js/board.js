@@ -93,6 +93,33 @@ $(function(){
 			currentPage = parseInt(vprev)-1;
 		}
 		listServer(currentPage);
-		
+	});
+
+/* 글쓰기 버튼 이벤트 */
+	$('#wrt').on('click', function(){
+		$('#wModal').modal({'backdrop':'static'});
+	});
+	
+/* 게시글 입력 후 전송 이벤트 */
+	$('#send').on('click', function(){
+		$.ajax({
+			url : '/Write.do',
+			type : 'post',
+			data : $('form').serialize(),
+			success : function(res){
+				if(res.code == "ok"){
+					alert("게시글이 등록되었습니다.");
+					$('#wModal').modal('hide'); // 게시글 작성 창 닫아주기
+					listServer(1);
+				} else {
+					alert("게시글 등록 실패하였습니다.");
+					$('#wModal').modal('hide');
+				}
+			},
+			error : function(xhr){
+				alert(xhr.status);
+			},
+			dataType : 'json'
+		});
 	});
 });
