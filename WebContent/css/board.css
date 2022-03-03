@@ -7,3 +7,9 @@
   float: right;
   width: 20%;
 }
+.pager {
+  float: left;
+}
+.container {
+  margin-left: 43%;	
+}

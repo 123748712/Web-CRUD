@@ -12,7 +12,7 @@
 	{
 		"sp" : "<%= sPage %>",
 		"ep" : "<%= ePage %>",
-		"ttp" : "<%= ttPage %>",
+		"tp" : "<%= ttPage %>",
 		"data" : [
 <%				
 					for(int i = 0; i < list.size(); i++){
@@ -29,7 +29,7 @@
 							"mail" : "<%=vo.getMail()  %>",
 							"content" : "<%=vo.getContent()  %>",
 							"hit" : "<%=vo.getHit()  %>",
-							"wdate" : "<%=vo.getWdata()  %>"
+							"wdate" : "<%=vo.getWdate()  %>"
 						}
 <%
 					} // for end

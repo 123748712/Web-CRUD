@@ -34,6 +34,30 @@ function listServer(page){
 			//여기까지...
 			code += `</div>`;
 			$('#list').html(code);
+			
+			// 페이징 BS Pagination, pager 활용
+			let pager = `<div class="container">`;
+			// <이전> 버튼
+			if(result.sp >= 1) {
+				pager += `<ul class="pager">`
+				pager += `<li><a href="#">Prev</a></li></ul>`
+			}
+		 	pager += `<ul class="pagination pager">`;
+			for(let i = result.sp; i<=result.ep; i++) {
+				if(currentPage == i) {
+					pager += `<li class="active"><a href="#" class="paging">${i}</a></li>`;
+				} else {
+					pager += `<li><a href="#" class="paging">${i}</a></li>`;
+				}
+			}
+				pager += `</ul>`;
+			// <다음> 버튼
+			if(result.ep <= result.tp){
+				pager += `<ul class="pager">`
+				pager += `<li><a href="#">Next</a></li></ul>`
+			}
+			pager += `</div>`;
+				$('#pageList').html(pager);
 		},
 		error:function(xhr){
 			alert(xhr.status);
@@ -41,3 +65,11 @@ function listServer(page){
 		dataType:'json'
 	});
 }
+
+/* 페이지 번호 클릭 이벤트 */
+$(function(){
+$('#pageList').on('click', '.paging', function(){
+	currentPage = $(this).text();
+	listServer(currentPage);
+});
+});

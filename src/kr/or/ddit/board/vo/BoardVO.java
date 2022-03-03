@@ -10,7 +10,7 @@ public class BoardVO {
 	private String content;
 	private String hit;
 	private String wip;
-	private String wdata;
+	private String wdate;
 
 	public int getNum() {
 		return num;
@@ -76,12 +76,12 @@ public class BoardVO {
 		this.wip = wip;
 	}
 
-	public String getWdata() {
-		return wdata;
+	public String getWdate() {
+		return wdate;
 	}
 
-	public void setWdata(String wdata) {
-		this.wdata = wdata;
+	public void setWdate(String wdate) {
+		this.wdate = wdate;
 	}
 
 }
